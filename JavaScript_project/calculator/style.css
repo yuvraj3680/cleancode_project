@@ -1,0 +1,101 @@
+@import url("https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap");
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Spartan", sans-serif;
+  font-size: 32px;
+}
+
+:root {
+  --bg-theme: hsl(222, 26%, 31%);
+  --bg-toggle-keypad: hsl(223, 31%, 20%);
+  --bg-screen: hsl(224, 36%, 15%);
+  --bg-del-reset-key: hsl(225, 21%, 49%);
+  --bg-keys: hsl(30, 25%, 89%);
+  --bg-result-toggle-key: hsl(6, 63%, 50%);
+  --hover-equal-sign: hsl(6, 70%, 34%);
+  --text-color: hsl(221, 14%, 31%);
+}
+
+body {
+  height: 100vh;
+  background-color: var(--bg-theme);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.calculator {
+  text-align: center;
+  width: 400px;
+}
+
+.calculator-screen {
+  width: 100%;
+  height: 100px;
+  background-color: var(--bg-screen);
+  color: #fff;
+  text-align: right;
+  font-size: 36px;
+  border: none;
+  padding: 0 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.calculator-keys {
+  width: 100%;
+  background-color: var(--bg-toggle-keypad);
+  padding: 15px 10px;
+  border-radius: 10px;
+}
+
+.row {
+  display: flex;
+}
+
+button {
+  height: 50px;
+  border: 1px solid black;
+  font-size: 32px;
+  width: 25%;
+  outline: none;
+  border-radius: 5px;
+  background-color: var(--bg-keys);
+  color: var(--text-color);
+}
+
+.all-clear,
+.zero-btn {
+  width: 50%;
+}
+
+.operator {
+  background-color: var(--bg-del-reset-key);
+  color: #fff;
+}
+
+.equal-sign {
+  background-color: var(--bg-result-toggle-key);
+  color: #fff;
+}
+
+button:hover {
+  background-color: darkgray;
+}
+
+.operator:hover {
+  background-color: var(--bg-toggle-keypad);
+}
+
+.equal-sign:hover {
+  background-color: var(--hover-equal-sign);
+}
+
+
+

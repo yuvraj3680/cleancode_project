@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stopwatch Application</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Custom CSS -->
+  <style>
+    /* Custom styles here */
+  </style>
+</head>
+<body>
+
+  <!-- Stopwatch Display -->
+  <div class="container mt-5 text-center">
+    <h1 id="display">00:00:00.000</h1>
+    <button id="startStop" class="btn btn-primary mr-2">Start</button>
+    <button id="reset" class="btn btn-danger">Reset</button>
+  </div>
+
+  <!-- Lap Times Display -->
+  <div class="container mt-3">
+    <h2>Lap Times</h2>
+    <ul id="lapTimes" class="list-group">
+    </ul>
+  </div>
+
+  <!-- Bootstrap JS and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Custom JavaScript -->
+  <script>
+    let startTime, elapsedTime, timerInterval;
+    const display = document.getElementById('display');
+    const startStopButton = document.getElementById('startStop');
+    const resetButton = document.getElementById('reset');
+    const lapTimesList = document.getElementById('lapTimes');
+
+    function startStop() {
+      if (startStopButton.textContent === 'Start') {
+        startStopButton.textContent = 'Stop';
+        startTime = Date.now() - elapsedTime;
+        timerInterval = setInterval(updateDisplay, 10);
+      } else {
+        startStopButton.textContent = 'Start';
+        clearInterval(timerInterval);
+      }
+    }
+
+    function updateDisplay() {
+      const now = Date.now();
+      elapsedTime = now - startTime;
+      display.textContent = formatTime(elapsedTime);
+    }
+
+    function formatTime(time) {
+      let hours = Math.floor(time / 3600000);
+      let minutes = Math.floor((time % 3600000) / 60000);
+      let seconds = Math.floor((time % 60000) / 1000);
+      let milliseconds = time % 1000;
+      return `${pad(hours)}:${pad(minutes)}:${pad(seconds)}.${pad(milliseconds, 3)}`;
+    }
+
+    function pad(number, length = 2) {
+      return ('0' + number).slice(-length);
+    }
+
+    function reset() {
+      clearInterval(timerInterval);
+      startStopButton.textContent = 'Start';
+      elapsedTime = 0;
+      display.textContent = '00:00:00.000';
+      lapTimesList.innerHTML = '';
+    }
+
+    function recordLapTime() {
+      const lapTimeItem = document.createElement('li');
+      lapTimeItem.className = 'list-group-item';
+      lapTimeItem.textContent = display.textContent;
+      lapTimesList.appendChild(lapTimeItem);
+    }
+
+    startStopButton.addEventListener('click', startStop);
+    resetButton.addEventListener('click', reset);
+  </script>
+</body>
+</html>
