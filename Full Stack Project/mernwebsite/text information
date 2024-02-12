@@ -1,0 +1,21 @@
+create 1 server.js
+create a router folder inside folder create the auth-router.js => creates the rou
+
+
+create the contact model
+1 step- create model 
+model folder create a contact model its done 
+and than
+2nd step difine router
+go to router folder create file contact-router.js
+
+3rd step got controller folder and than create file contact- controller
+4th step define the path in server.js
+
+react start
+
+run ...npm run dev start the application
+
+npm create vite@latest
+
+"mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.1/mern-admin"
